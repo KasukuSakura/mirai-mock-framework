@@ -1,0 +1,240 @@
+
+body {
+    display: flex;
+    flex-direction: row;
+
+    --leftbar-width: 280px;
+    --contact-bar-background: rgb(23, 33, 43);
+}
+
+.contacts {
+    width: var(--leftbar-width);
+    background: var(--contact-bar-background);
+    border-right: 1px black solid;
+}
+
+.maindisplay {
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+.idle-content {
+    height: 100%;
+    flex-shrink: 0;
+}
+
+.idle-content span {
+    display: inline-block;
+    width: max-content;
+    margin: 0 auto;
+}
+
+
+.appname {
+    line-height: var(--topbar-height);
+    font-size: calc(var(--topbar-height) / 2);
+    text-align: center;
+}
+
+.contact-card {
+    padding: 7px;
+    font-size: 0;
+}
+
+.contact-card .contact-card-texts {
+    display: inline-block;
+    vertical-align: middle;
+    width: calc(var(--leftbar-width) - 55px - 14px);
+    font-size: medium;
+    padding-left: 5px;
+    box-sizing: border-box;
+
+    white-space: nowrap;
+}
+
+.contact-card > img {
+    width: 55px;
+    height: 55px;
+    border-radius: 100%;
+    vertical-align: middle;
+}
+
+.contact-card-texts .topline {
+    display: flex;
+}
+
+.contact-card-texts .topline > span {
+    display: block;
+}
+
+.contact-card-texts .topline > span:first-child {
+    flex-grow: 1;
+    flex-shrink: 1;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.contact-card-texts .linesplit {
+    height: 3px;
+}
+
+a {
+    color: pink !important;
+}
+
+.contact-card:hover {
+    background: rgb(32, 43, 54);
+}
+
+.contact-card[data-active=true] {
+    background: rgb(43, 82, 120) !important;
+}
+
+.chatting .topbar {
+    background: var(--contact-bar-background);
+    padding-left: 30px;
+    padding-top: 10px;
+}
+
+.chat-panel {
+    padding-left: 30px;
+    padding-right: 15px;
+    display: flex;
+    flex-direction: column;
+
+    align-items: stretch;
+    overflow: auto;
+}
+
+.chat-panel > *:first-child {
+    margin-top: 5px;
+}
+
+.chat-panel > * {
+    flex-shrink: 0;
+    flex-grow: 0;
+    margin-bottom: 5px;
+}
+
+.chatting .topbar > :nth-child(1) {
+    font-size: larger;
+}
+
+.chatting .topbar > :nth-child(2) {
+    color: gray;
+    font-size: smaller;
+}
+
+.chatting {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.chatting > .chat-panel {
+    flex-grow: 1;
+}
+
+.msg-send > img {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    display: block;
+}
+
+.msg-send {
+    background: var(--contact-bar-background);
+    padding-top: 10px;
+    padding-left: 30px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.msg-send > textarea {
+    border: none;
+    margin-left: 5px;
+    color: white;
+    background: none;
+    flex-grow: 1;
+    min-height: 20px;
+    height: auto;
+    resize: vertical;
+}
+
+.msg-send .btn {
+    font-size: 20px;
+    padding: 5px 15px;
+}
+
+.contact-chat > img {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+}
+
+.contact-chat {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.chat-content {
+    margin-left: 5px;
+    padding: 8px;
+    border-radius: 5px;
+    background: rgb(24, 37, 51);
+}
+
+.contact-chat[data-byself] .chat-content {
+    background: rgb(43, 82, 120);
+}
+
+.contact-chat > .time {
+    color: gray;
+    font-size: smaller;
+    margin-left: 5px;
+}
+
+.chat-content > .username {
+    margin-bottom: 2px;
+    font-size: small;
+}
+
+.list-select {
+    display: block;
+    margin: 0;
+}
+
+.list-select > div:hover {
+    background: rgba(255, 255, 255, 0.21);
+}
+
+.list-select > * {
+    display: block;
+    margin: 0;
+}
+
+.list-select-sendas {
+    padding: 0 !important;
+}
+
+.list-select-sendas > * {
+    padding: 4px 15px;
+}
+
+.list-select-sendas > * > * {
+    vertical-align: middle;
+}
+
+.list-select-sendas img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    margin-right: 5px;
+}
+
+.list-select-sendas [data-type='active'] {
+    color: rgb(15, 213, 213);
+}

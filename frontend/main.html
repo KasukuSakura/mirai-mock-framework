@@ -1,0 +1,106 @@
+<html>
+<head>
+    <title>Mirai Mock WebUI</title>
+    <link rel="stylesheet" href="./css/theme.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="/fontawesome/css/all.min.css">
+    <script src="js/notification.js"></script>
+    <script src="js/single-message-editor-adapter.js"></script>
+</head>
+<body>
+
+<div class="contacts">
+    <div class="topbar appname">Mirai Mock</div>
+    <div class="contact-list">
+        <div class="contact-card">
+            <img src="imgs/default-contact.png"/>
+            <div class="contact-card-texts">
+                <div class="topline">
+                    <span class="contact-name">寄吸AAAAAAAAAAAAAAAAAA</span>
+                    <span class="contact-time">19/14/1145</span>
+                </div>
+                <div class="linesplit"></div>
+                <div class="secline">
+                    OWO
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-card" style="color: gray" data-type="create-new-contact">
+        <div class="contact-card-texts">
+            <div class="linesplit"></div>
+            <div class="topline">
+                <span class="contact-name">
+                    <i class="fa-solid fa-plus"></i>
+                    Create new contact
+                </span>
+            </div>
+            <div class="linesplit"></div>
+        </div>
+    </div>
+</div>
+<div class="maindisplay">
+
+    <div class="idle-content" hidden>
+        <div class="full-center-container">
+            <span class="systemmsg">Select a chat or create a new chat to start mocking....</span>
+        </div>
+    </div>
+
+    <div class="chatting">
+        <div class="topbar">
+            <div data-type="contact-name">寄吸寄吸寄</div>
+            <div data-type="contact-status">2333 members</div>
+        </div>
+
+        <div class="chat-panel">
+            <div class="systemmsg">
+                SYSTEM MSG
+            </div>
+
+            <div class="systemmsg">
+                SYSTEM MSG
+            </div>
+
+            <div class="contact-chat">
+                <img src="imgs/default-contact.png"/>
+                <div class="chat-content">
+                    <div class="username">寄吸</div>
+                    <div>
+                        AAAAAAAAAAAAAA
+                    </div>
+                </div>
+                <span class="time">12:00</span>
+            </div>
+
+            <div class="contact-chat" data-byself>
+                <img src="imgs/default-contact.png"/>
+                <div class="chat-content">
+                    <div class="username">Karlatemp</div>
+                    <div>
+                        AXE
+                    </div>
+                </div>
+                <span class="time">12:00</span>
+            </div>
+        </div>
+
+        <div class="msg-send">
+            <img src="imgs/default-contact.png"/>
+            <textarea placeholder="Write something..." rows="1"></textarea>
+            <div class="btn btn-send">
+                <i class="fa-solid fa-paper-plane"></i>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<script src="js/main.js"></script>
+<script src="/bot-init.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+.gradle
+.idea
+build/
+
+/fontawesome*
+
+*.log
+*.class

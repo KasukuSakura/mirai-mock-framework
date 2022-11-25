@@ -1,0 +1,9 @@
+id: com.kasukusakura.miraimock
+name: Mirai Mock System For Console
+version: "${version}"
+author: Karlatemp
+
+
+main: STUB_STRING_FOR_SUPPRESS_IDEA_SCHEMA_WARNING
+
+

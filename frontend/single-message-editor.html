@@ -1,0 +1,53 @@
+<html>
+<head>
+    <title>Single Message Editor</title>
+    <link rel="stylesheet" href="./css/theme.css">
+    <link rel="stylesheet" href="./css/single-message-editor.css">
+    <link rel="stylesheet" href="/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="./css/notification.css">
+    <script src="js/notification.js"></script>
+    <script src="js/single-message-editor-adapter.js"></script>
+</head>
+<body>
+
+<div data-type="lines"></div>
+
+<div data-type="editor-new-element">
+    <div class="editor-btn editor-btn-add">
+        <i class="fa-solid fa-plus"></i>
+    </div>
+    <div data-type="editor-element-types" style="display: inline-block">
+
+        <div data-type="plain" class="editor-btn editor-btn-add">
+            Plain Text
+        </div>
+
+        <div data-type="@" class="editor-btn editor-btn-add">
+            At
+        </div>
+
+        <div data-type="forward" class="editor-btn editor-btn-add">
+            Forwarded Message
+        </div>
+
+        <div data-type="image" class="editor-btn editor-btn-add">
+            Image / Flash Image
+        </div>
+
+        <div data-type="rawjson" class="editor-btn editor-btn-add">
+            Raw JSON
+        </div>
+
+    </div>
+</div>
+
+<div>
+    <div class="editor-btn editor-btn-complete">
+        <i class="fa-solid fa-check"></i>
+    </div>
+</div>
+
+<script src="js/single-message-editor.js"></script>
+
+</body>
+</html>

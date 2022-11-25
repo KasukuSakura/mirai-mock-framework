@@ -1,0 +1,24 @@
+<html>
+<body>
+<script src="./js/single-message-editor-adapter.js"></script>
+<script src="./js/notification.js"></script>
+<script>
+    let btn = document.createElement('button')
+    btn.textContent = "AAAA"
+    document.body.appendChild(btn);
+    btn.onclick = () => {
+        SingleMessageEditor.openEdit([
+            {type: 'plain', content: 'AA'}
+        ], (a) => {
+            console.log("AAAA", a)
+            MMFNotification.pushMsg(JSON.stringify(a, undefined, 2))
+        })
+    }
+</script>
+
+<div>
+    Line1 AAA
+    Line2
+</div>
+</body>
+</html>

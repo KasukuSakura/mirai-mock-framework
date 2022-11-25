@@ -1,0 +1,48 @@
+plugins {
+    id 'java'
+    id 'java-library'
+    id 'org.jetbrains.kotlin.jvm'
+    id 'org.jetbrains.kotlin.plugin.serialization'
+
+    id 'net.mamoe.mirai-console' version '2.13.0'
+}
+
+mirai {
+    noCoreApi = true
+    noTestCore = true
+    noConsole = true
+    useTestConsoleFrontEnd = null
+    consoleTestRuntime = false
+}
+
+dependencies {
+    api(project(':web-ui')) {
+        exclude group: 'net.mamoe'
+    }
+    compileOnly "net.mamoe:mirai-console:$miraiversion"
+    compileOnly "net.mamoe:mirai-core-mock:$miraiversion"
+    compileOnly "net.mamoe:mirai-core-utils:$miraiversion"
+
+    api 'org.spongepowered:configurate-hocon:4.1.2'
+}
+
+processResources {
+    from(project.file('src/main/extres')) {
+        expand([
+                'version'         : project.version,
+                'project_location': rootProject.projectDir.absolutePath.replace('\\', '/')
+        ])
+        // include 'plugin.yml'
+    }
+}
+
+
+afterEvaluate {
+    buildPlugin {
+        dependsOn(':web-ui:jar')
+        archiveBaseName.set('mirai-mock-framework-console')
+        archiveVersion.set('1.0.0')
+    }
+}
+sourceCompatibility = JavaVersion.VERSION_1_9
+targetCompatibility = JavaVersion.VERSION_1_9

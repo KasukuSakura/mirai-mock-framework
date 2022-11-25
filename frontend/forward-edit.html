@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title>Mirai Mock WebUI</title>
+    <link rel="stylesheet" href="./css/theme.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/single-message-editor.css">
+    <link rel="stylesheet" href="/fontawesome/css/all.min.css">
+    <script src="js/notification.js"></script>
+    <script src="js/single-message-editor-adapter.js"></script>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column !important;
+        }
+
+        body > * {
+            flex-grow: 0 !important;
+        }
+    </style>
+</head>
+<body>
+<div class="maindisplay">
+    <div class="idle-content" hidden></div>
+
+    <div class="chatting">
+        <div class="chat-panel">
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+    forwardEdit = {
+        subnodes: [],
+    };
+</script>
+
+<div class="editor-btn editor-btn-add">
+    <i class="fa-solid fa-plus"></i>
+</div>
+
+<div class="editor-btn editor-btn-complete">
+    <i class="fa-solid fa-check"></i>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+rootProject.name = 'mirai-mock-framework'
+
+include ':web-ui'
+include ':mirai-mock-framework-sdk'
+include ':plugin'
+include ':pluginwrapper'

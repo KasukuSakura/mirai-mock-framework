@@ -1,0 +1,63 @@
+body {
+    padding: 5px !important;
+    box-sizing: border-box;
+}
+
+
+.editor-btn {
+    display: inline-block;
+    font-size: larger;
+    padding: 4px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.35s ease;
+    opacity: 1;
+}
+
+.editor-btn:hover {
+    filter: brightness(110%);
+}
+
+.editor-btn-add {
+    background: orange;
+    color: white;
+}
+
+.editor-btn-trash {
+    background: red;
+    color: white;
+}
+
+.editor-btn-complete {
+    background: rgb(102, 255, 204);
+    color: black;
+}
+
+[data-type="lines"] > * {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+}
+
+[data-type="lines"] > div > [data-nogrow] {
+    flex-grow: 0 !important;
+}
+
+[data-type="lines"] > div > *:not(.editor-btn-trash) {
+    flex-grow: 1;
+}
+
+
+div[data-type='editor-new-element'] div[data-type='editor-element-types'] {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+div[data-type='editor-new-element']:hover .editor-btn-add:not([data-type]) {
+    opacity: 0.2;
+}
+
+div[data-type='editor-new-element']:hover div[data-type='editor-element-types'] {
+    opacity: 1;
+}
+

@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+    id 'java-library'
+    id 'org.jetbrains.kotlin.jvm'
+}
+
+
+dependencies {
+
+    compileOnly "net.mamoe:mirai-console:$miraiversion"
+    compileOnly "net.mamoe:mirai-core-mock:$miraiversion"
+    compileOnly "net.mamoe:mirai-core-utils:$miraiversion"
+
+}
+
+
+processResources {
+    from(project(':plugin').file('src/main/extres')) {
+        expand([
+                'version'         : project.version,
+                'project_location': rootProject.projectDir.absolutePath.replace('\\', '/')
+        ])
+    }
+}
+
+jar {
+    archiveBaseName.set('mirai-mock-framework-console')
+    archiveVersion.set('1.0.0')
+}

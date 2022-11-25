@@ -1,0 +1,24 @@
+.notification {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 900;
+}
+
+.notification > div {
+    white-space: break-spaces;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    min-width: 320px;
+    min-height: 80px;
+    background: black;
+    color: white;
+    box-sizing: border-box;
+
+    padding: 5px;
+    border: 1px solid white;
+    transition: all 0.3s ease;
+}
