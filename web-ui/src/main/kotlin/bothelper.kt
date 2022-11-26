@@ -5,15 +5,16 @@ import com.google.common.cache.CacheBuilder
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonElement
+import com.google.gson.JsonObject
 import com.google.gson.TypeAdapter
 import com.google.gson.stream.JsonReader
 import com.google.gson.stream.JsonWriter
+import com.kasukusakura.miraimockframework.stream
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import net.mamoe.mirai.contact.ContactOrBot
-import net.mamoe.mirai.contact.MemberPermission
+import net.mamoe.mirai.contact.*
 import net.mamoe.mirai.message.data.*
 import net.mamoe.mirai.message.data.Image.Key.queryUrl
 import net.mamoe.mirai.mock.MockBot
@@ -294,6 +295,34 @@ internal fun MessageChain.mfkitSerialize(): String {
     )
 }
 
+internal fun parseSource(subcmp: JsonObject): MessageSource? {
+    val subj = subcmp["subject"].asJsonPrimitive.asString.findByContactId() ?: return null
+
+    return publicMockBot.buildMessageSource(
+        kind = when (subj) {
+            is Friend -> MessageSourceKind.FRIEND
+            is Group -> MessageSourceKind.GROUP
+            is Member -> MessageSourceKind.TEMP
+            is Stranger -> MessageSourceKind.STRANGER
+            is OtherClient -> MessageSourceKind.FRIEND
+            else -> error(subcmp.toString())
+        }
+    ) {
+        this.fromId = subcmp["srcSenderNativeId"].asLong
+        this.ids = subcmp["srcIds"].asJsonArray.spliterator().stream()
+            .mapToInt { it.asInt }
+            .toArray()
+
+        this.internalIds = subcmp["srcInternalIds"].asJsonArray.spliterator().stream()
+            .mapToInt { it.asInt }
+            .toArray()
+
+        this.time = subcmp["srcTimestamp"].asInt
+        this.targetId = subj.id
+        subcmp["srcMsgSourceSnapshot"]?.asString?.let { this.messages(PlainText(it)) }
+    }
+}
+
 internal fun mfkitDecodeMessage(data: JsonElement): MessageChain {
     val msgc = data.asJsonArray
     val builder = MessageChainBuilder()
@@ -311,6 +340,11 @@ internal fun mfkitDecodeMessage(data: JsonElement): MessageChain {
             "flashImage" -> {
                 val imgx = imgDB.getIfPresent(subcmp["imgId"].asString)
                 if (imgx != null) builder.append(imgx.flash())
+            }
+
+            "reply" -> {
+                val src = parseSource(subcmp) ?: return@forEach
+                builder.append(QuoteReply(src))
             }
 
             "forward" -> {

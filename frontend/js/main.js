@@ -300,7 +300,7 @@
             Object.defineProperty(ginfo, 'displayName', {get: lowlevel.helpers.display_for_group});
             Object.defineProperty(ginfo, 'memberCount', {get: lowlevel.helpers.calc_membercount});
 
-            ginfo.members[ownerNid] = lowlevel.createmember(ownerNid, '', 2);
+            ginfo.members[ownerNid] = lowlevel.createmember(ownerNid, '', 2, ginfo);
             let contact = lowlevel.initContact(ginfo);
             contactList[cid] = contact;
             groupsList.push(contact);
@@ -473,6 +473,8 @@
                         openMainMessageEditor();
                         if (isMainMessageEditorAvailable()) {
                             mainMessageEditor.postMessage([{
+                                subject: msgNormal.subject,
+                                srcSenderNativeId: msgNormal.sender.nativeId,
                                 type: 'reply',
                                 srcIds: msgNormal.ids,
                                 srcInternalIds: msgNormal.internalIds,

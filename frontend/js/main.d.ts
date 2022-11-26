@@ -101,6 +101,8 @@ export namespace MMF {
         }
 
         export interface Reply {
+            subject: string;
+            srcSenderNativeId: number;
             srcIds: number[];
             srcInternalIds: number[];
             srcTimestamp: number;
@@ -115,6 +117,7 @@ export namespace MMF {
 
         export interface MessageBase {
             readonly type: MsgType;
+            readonly subject: string;
 
             readonly messageId: string;
             readonly timestamp: number;
