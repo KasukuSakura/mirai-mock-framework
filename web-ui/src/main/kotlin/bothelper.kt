@@ -130,7 +130,7 @@ internal fun publishBotContactLists(writer: Writer) {
             writer.append("mgroup.groupInfo.members[").append(mgm.id.toString()).append("]=lowlevel.createmember(")
             writer.append(mgm.id.toString()).append(", ").append(mgm.nick.escape()).append(", ").append(
                 mgm.permission.ordinal.toString()
-            ).append(");\n")
+            ).append(", mgroup);\n")
         }
 
         writer.append("})(")

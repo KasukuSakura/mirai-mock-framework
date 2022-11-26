@@ -56,6 +56,7 @@ export namespace MMF {
         permission: MemberPermission;
         nameCard: string;
         chatColor: string;
+        declaredGroupId: string;
     }
 
     export namespace MiraiMsg {

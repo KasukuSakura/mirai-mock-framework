@@ -271,7 +271,7 @@
             Object.defineProperty(finfo, 'lastSpeakTimestamp', {get: lowlevel.helpers.bridge_last_spacetimestamp.bind(contact)});
             return contact
         },
-        createmember: (mid, name, perm) => {
+        createmember: (mid, name, perm, ginfo) => {
             let minfo = {
                 type: 'member',
                 nameCard: '',
@@ -281,6 +281,7 @@
                 nativeId: mid,
                 permission: perm,
                 chatColor: helpers.randomItem(lowlevel.member_available_colors),
+                declaredGroupId: ginfo.contactId,
             };
             Object.defineProperty(minfo, 'displayName', {get: lowlevel.helpers.display_for_member})
             return minfo
