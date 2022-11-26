@@ -126,9 +126,6 @@ internal object InitializeBoot10086 {
                                 )
                             }
                         }
-                        classpath.pluginSharedLibrariesClassLoader.cast<URLClassLoader>().urLs.forEach {
-                            plugin.logger.debug(it.toURI().toString())
-                        }
                         return@mockModuleLoad
                     }
                 }
